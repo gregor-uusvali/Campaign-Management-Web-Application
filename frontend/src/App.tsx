@@ -1,54 +1,134 @@
-// import { useState, useEffect } from 'react'
 import './App.css';
-// import Form from './components/Form';
-// import CampaignTable from './components/Table';
-
+import { useState, useEffect } from 'react'
+import { Card, Table } from '@mantine/core';
+import { Tabs } from '@mantine/core';
+import { useForm } from '@mantine/form';
+import { TextInput, Button, Group } from '@mantine/core';
+import { randomId } from '@mantine/hooks';
+import { Switch } from '@mantine/core';
+import { ActionIcon } from "@mantine/core";
+import { IconTrash } from "@tabler/icons-react";
 
 export interface Payout {
   id?: number;
   country: string;
-  amount: number;
+  payout: number;
 }
 
 export interface Campaign {
   id?: number;
   title: string;
-  landingPageUrl: string;
-  isRunning: boolean;
+  landing_page_url: string;
+  is_running: boolean;
   payouts: Payout[];
 }
 
 function App() {
-  // const [items, setItems] = useState<Item[]>([]);
-  // const [loading, setLoading] = useState<boolean>(true);
-  // const [error, setError] = useState<string>('');
+  const [campaigns, setCampaigns] = useState<Campaign[]>([]);
+  const apiUrl = 'http://localhost:8000/api';
 
-  // useEffect(() => {
-  //   const fetchItems = async () => {
-  //     try {
-  //       const response = await fetch(`${import.meta.env.VITE_API_URL}/api/items/`);
-  //       if (!response.ok) {
-  //         throw new Error('Network response was not ok');
-  //       }
-  //       const data = await response.json();
-  //       setItems(data);
-  //       setLoading(false);
-  //     } catch (err) {
-  //       setError('Failed to fetch items');
-  //       setLoading(false);
-  //     }
-  //   };
+  const form = useForm({
+    mode: 'uncontrolled',
+    initialValues: {
+      name: '',
+      email: '',
+    },
+  });
 
-  //   fetchItems();
-  // }, []);
+  useEffect(() => {
+    const fetchItems = async () => {
+      try {
+        const response = await fetch(`${apiUrl}`);
+        if (!response.ok) {
+          throw new Error('Error fetching data');
+        }
+        const data = await response.json();
+        setCampaigns(data);
+      } catch (err) {
+        console.error("Error fetching data:", err);
+      }
+    };
 
-  // if (loading) return <div>Loading...</div>;
-  // if (error) return <div>{error}</div>;
+    fetchItems();
+  }, []);
+
+  const renderRows = () => {
+    return campaigns.map((campaign) => (
+      <Table.Tr key={campaign.id}>
+        <Table.Td>{campaign.title}</Table.Td>
+        <Table.Td>{campaign.landing_page_url}</Table.Td>
+        <Table.Td>
+          {campaign.payouts.map(payout => 
+            `${payout.country}: ${payout.payout}`
+          ).join(', ')}
+        </Table.Td>
+        <Table.Td>
+          <Switch defaultChecked={campaign.is_running} color="green" />
+        </Table.Td>
+        <Table.Td>  
+          <ActionIcon color="red" variant="filled" aria-label="Delete">
+            <IconTrash size="1.2rem" />
+          </ActionIcon>
+        </Table.Td>
+      </Table.Tr>
+    ));
+  };
 
   return (
-    <div className="fullscreen flex">
-      {/* <CampaignTable /> */}
-    </div>
+    <Tabs color="teal" defaultValue="campaign" className="tab">
+      <Tabs.List>
+        <Tabs.Tab value="campaign" className="tab-btn">Campaigns</Tabs.Tab>
+        <Tabs.Tab value="addCampaing" className="tab-btn">New campaign</Tabs.Tab>
+      </Tabs.List>
+
+      <Tabs.Panel value="campaign" pt="xs">
+        <Table>
+          <Table.Thead>
+            <Table.Tr>
+              <Table.Th>Title</Table.Th>
+              <Table.Th>URL</Table.Th>
+              <Table.Th>Payouts</Table.Th>
+              <Table.Th>Active</Table.Th>
+              <Table.Th></Table.Th>
+            </Table.Tr>
+          </Table.Thead>
+          <Table.Tbody>{renderRows()}</Table.Tbody>
+        </Table>
+      </Tabs.Panel>
+
+      <Tabs.Panel className="card-pannel" value="addCampaing" pt="xs">
+        <Card className="card" withBorder shadow="sm" radius="md">
+          <div>
+            <TextInput
+              label="Name"
+              placeholder="Name"
+              key={form.key('name')}
+              {...form.getInputProps('name')}
+            />
+            <TextInput
+              mt="md"
+              label="Email"
+              placeholder="Email"
+              key={form.key('email')}
+              {...form.getInputProps('email')}
+            />
+
+            <Group justify="center" mt="xl">
+              <Button
+                onClick={() =>
+                  form.setValues({
+                    name: randomId(),
+                    email: `${randomId()}@test.com`,
+                  })
+                }
+              >
+                Set random values
+              </Button>
+            </Group>
+          </div>
+        </Card>
+      </Tabs.Panel>
+    </Tabs>
   );
 }
 

@@ -1,0 +1,182 @@
+[
+  {
+    "model": "api.campaign",
+    "pk": 1,
+    "fields": {
+      "title": "Spring Sale",
+      "landing_page_url": "https://springsale.com",
+      "is_running": true
+    }
+  },
+  {
+    "model": "api.campaign",
+    "pk": 2,
+    "fields": {
+      "title": "Winter Discount",
+      "landing_page_url": "https://winterdiscount.com",
+      "is_running": false
+    }
+  },
+  {
+    "model": "api.campaign",
+    "pk": 3,
+    "fields": {
+      "title": "Summer Festival",
+      "landing_page_url": "https://summerfest.com",
+      "is_running": true
+    }
+  },
+  {
+    "model": "api.campaign",
+    "pk": 4,
+    "fields": {
+      "title": "Black Friday",
+      "landing_page_url": "https://blackfriday.com",
+      "is_running": true
+    }
+  },
+  {
+    "model": "api.campaign",
+    "pk": 5,
+    "fields": {
+      "title": "Cyber Monday",
+      "landing_page_url": "https://cybermonday.com",
+      "is_running": true
+    }
+  },
+  {
+    "model": "api.campaign",
+    "pk": 6,
+    "fields": {
+      "title": "Back to School",
+      "landing_page_url": "https://backtoschool.com",
+      "is_running": false
+    }
+  },
+  {
+    "model": "api.campaign",
+    "pk": 7,
+    "fields": {
+      "title": "Halloween Special",
+      "landing_page_url": "https://halloween.com",
+      "is_running": true
+    }
+  },
+  {
+    "model": "api.campaign",
+    "pk": 8,
+    "fields": {
+      "title": "Valentine's Day",
+      "landing_page_url": "https://valentines.com",
+      "is_running": false
+    }
+  },
+  {
+    "model": "api.campaign",
+    "pk": 9,
+    "fields": {
+      "title": "Easter Deals",
+      "landing_page_url": "https://easterdeals.com",
+      "is_running": true
+    }
+  },
+  {
+    "model": "api.campaign",
+    "pk": 10,
+    "fields": {
+      "title": "New Year Celebration",
+      "landing_page_url": "https://newyear.com",
+      "is_running": true
+    }
+  },
+  {
+    "model": "api.payout",
+    "pk": 1,
+    "fields": {
+      "campaign": 1,
+      "country": "USA",
+      "payout": "3.50"
+    }
+  },
+  {
+    "model": "api.payout",
+    "pk": 2,
+    "fields": {
+      "campaign": 1,
+      "country": "UK",
+      "payout": "2.80"
+    }
+  },
+  {
+    "model": "api.payout",
+    "pk": 3,
+    "fields": {
+      "campaign": 2,
+      "country": "Germany",
+      "payout": "4.00"
+    }
+  },
+  {
+    "model": "api.payout",
+    "pk": 4,
+    "fields": {
+      "campaign": 2,
+      "country": "Canada",
+      "payout": "3.20"
+    }
+  },
+  {
+    "model": "api.payout",
+    "pk": 5,
+    "fields": {
+      "campaign": 3,
+      "country": "France",
+      "payout": "2.50"
+    }
+  },
+  {
+    "model": "api.payout",
+    "pk": 6,
+    "fields": {
+      "campaign": 4,
+      "country": "Spain",
+      "payout": "3.10"
+    }
+  },
+  {
+    "model": "api.payout",
+    "pk": 7,
+    "fields": {
+      "campaign": 5,
+      "country": "Italy",
+      "payout": "3.70"
+    }
+  },
+  {
+    "model": "api.payout",
+    "pk": 8,
+    "fields": {
+      "campaign": 6,
+      "country": "Brazil",
+      "payout": "1.50"
+    }
+  },
+  {
+    "model": "api.payout",
+    "pk": 9,
+    "fields": {
+      "campaign": 7,
+      "country": "Mexico",
+      "payout": "2.90"
+    }
+  },
+  {
+    "model": "api.payout",
+    "pk": 10,
+    "fields": {
+      "campaign": 8,
+      "country": "Australia",
+      "payout": "4.20"
+    }
+  }
+]
