@@ -16,5 +16,20 @@
 
 .card {
     margin-top:20px;
-    width:800px;
+    width: 600px;
+    height: fit-content;
+}
+
+.payout-field {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.payout-textfield {
+    width: 100%;
+}
+
+.minus-btn {
+    margin-top: 40px
 }

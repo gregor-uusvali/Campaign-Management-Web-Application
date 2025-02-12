@@ -5,4 +5,5 @@ urlpatterns = [
     path('', views.getCampaings),
     path('add/', views.addCampaing),
     path('toggle/', views.toggleActive),
+    path('delete/', views.deleteCampaign),
 ]

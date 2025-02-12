@@ -52,3 +52,13 @@ def toggleActive(request):
     except Campaign.DoesNotExist:
         return Response({"error": "Invalid id"})
     
+@api_view(['POST'])
+def deleteCampaign(request):
+    campaign_id = request.data.get("id")
+    try:
+        campaign = Campaign.objects.get(pk=campaign_id)
+        campaign.delete()
+        return Response({"response": "Campaign deleted"})
+    except Campaign.DoesNotExist:
+        return Response({"error": "Invalid id"})
+    
