@@ -58,12 +58,12 @@ const FormComponent = ({ onCampaignCreated }: FormComponentProps) => {
     if (!form.validate().hasErrors) {
       try {
         const response = await fetch(`${apiUrl}/add/`, {
-          method: 'POST',
+          method: "POST",
           headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
+            Accept: "application/json",
+            "Content-Type": "application/json",
           },
-          body: JSON.stringify(form.values)
+          body: JSON.stringify(form.values),
         });
         if (!response.ok) {
           throw new Error("Error creating campaign");
@@ -73,14 +73,13 @@ const FormComponent = ({ onCampaignCreated }: FormComponentProps) => {
         onCampaignCreated(newCampaign);
         form.reset();
         notifications.show({
-          message: 'Campaign created successfully!',
+          message: "Campaign created successfully!",
           autoClose: 3000,
         });
-        
       } catch (err) {
         console.error("Error creating campaign:", err);
       }
-    } 
+    }
   };
 
   return (

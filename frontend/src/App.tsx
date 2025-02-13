@@ -20,6 +20,8 @@ export interface Campaign {
   payouts: Payout[];
 }
 
+
+
 const App = () => {
   const [campaigns, setCampaigns] = useState<Campaign[]>([]);
 
