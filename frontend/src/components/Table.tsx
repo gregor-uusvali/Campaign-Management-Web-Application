@@ -89,7 +89,7 @@ const TableComponent = ({ campaigns, setCampaigns }: TableComponentProps) => {
         </Table.Td>
         <Table.Td>
           <Switch
-            onChange={(e) => toggleIsRunning(campaign.id)}
+            onChange={() => toggleIsRunning(campaign.id)}
             defaultChecked={campaign.is_running}
             color="green"
           />
