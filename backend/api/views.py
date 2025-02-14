@@ -74,7 +74,7 @@ def toggleActive(request):
         campaign.save()
         return Response(
             {
-                "response": f"Campaign {"activated" if campaign.is_running else "deactivate"}"
+                "response": f"Campaign {'activated' if campaign.is_running else 'deactivate'}"
             }
         )
     except Campaign.DoesNotExist:
