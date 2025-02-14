@@ -2,6 +2,7 @@
 Campaign Management Web Application
 
 Full Stack Developer Assignment Project. The main goal of this project is to create a simple Campaign Management Web Application which is a tool for managing marketing campaigns. The project is built using React with Vite on the frontend and Django on the backend.
+[Link to demo](http://5.189.135.103/)
 
 ## Features
 
