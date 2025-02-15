@@ -14,6 +14,7 @@ Full Stack Developer Assignment Project. The main goal of this project is to cre
   - Landing Page URL
   - Running status
 - View campaign details including Title, Landing Page URL, and Payouts
+- Test to check if campaign creation successful in `backend/api/tests.py`
 
 ## Domain Model
 
